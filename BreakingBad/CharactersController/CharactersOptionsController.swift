@@ -17,12 +17,12 @@ class CharactersOptionsController: UITableViewController {
     }
 	
 	@IBAction func sortOrderAction(_ sender: UISegmentedControl) {
-		let sortOrder: OptionsSortOrder = (sender.selectedSegmentIndex == 0) ? .Default : .AtoZ
+		let sortOrder: CharacterOptionsSortOrder = (sender.selectedSegmentIndex == 0) ? .Default : .AtoZ
 		self.delegate?.changeSortOrder(sortOrder)
 	}
 	
 	@IBAction func layoutAction(_ sender: UISegmentedControl) {
-		let layout: OptionsLayout = (sender.selectedSegmentIndex == 0) ? .Row : .Grid
+		let layout: CharacterOptionsLayout = (sender.selectedSegmentIndex == 0) ? .Row : .Grid
 		self.delegate?.changeLayout(layout)
 	}
 	
@@ -36,16 +36,16 @@ class CharactersOptionsController: UITableViewController {
 
 
 
-enum OptionsSortOrder {
+enum CharacterOptionsSortOrder {
 	case AtoZ
 	case Default
 }
-enum OptionsLayout {
+enum CharacterOptionsLayout {
 	case Grid
 	case Row
 }
 
 protocol CharactersOptionsControllerDelegate {
-	func changeSortOrder(_ sortOrder: OptionsSortOrder)
-	func changeLayout(_ layout: OptionsLayout)
+	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder)
+	func changeLayout(_ layout: CharacterOptionsLayout)
 }

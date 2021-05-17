@@ -14,9 +14,10 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 	let charactersModel = CharactersDataModel()
 	var characters = [Character]()
 	var characterOptionsPopover: CharactersOptionsController?
-	var sortOrder: OptionsSortOrder = .Default
+	var sortOrder: CharacterOptionsSortOrder = .Default
 	
 	
+	// MARK: - Methods Body
 	override func viewDidLoad() {
         super.viewDidLoad()
 		collectionView.collectionViewLayout = compositionalLayout()
@@ -91,6 +92,7 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
     }
 
     // MARK: - UICollectionViewDelegate
+	// The grid layout for the collectionView
 	func compositionalLayout(fraction: CGFloat = 1/2) -> UICollectionViewCompositionalLayout {
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fraction), heightDimension: .fractionalHeight(1))
 		let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -107,12 +109,12 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 	
 	
 	// MARK: - CharactersOptionsControllerDelegate
-	func changeSortOrder(_ sortOrder: OptionsSortOrder) {
+	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder) {
 		self.sortOrder = sortOrder
 		self.sortData()
 	}
 	
-	func changeLayout(_ layout: OptionsLayout) {
+	func changeLayout(_ layout: CharacterOptionsLayout) {
 		var fraction: CGFloat = 1/1
 		switch layout {
 			case .Grid:
