@@ -14,9 +14,16 @@
         <scene sceneID="fHr-dm-3yO">
             <objects>
                 <navigationController id="P9z-3U-Yl5" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X8t-ct-yOG">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="X8t-ct-yOG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="8Pr-Sn-eFl" kind="relationship" relationship="rootViewController" id="58F-LA-cJr"/>
@@ -26,14 +33,14 @@
             </objects>
             <point key="canvasLocation" x="-376" y="93"/>
         </scene>
-        <!--Breaking Bad-->
+        <!--Characters-->
         <scene sceneID="GxC-bM-g6b">
             <objects>
                 <collectionViewController id="8Pr-Sn-eFl" customClass="CharactersViewController" customModule="BreakingBad" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8sL-M2-DQO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G61-NE-QgV">
                             <size key="itemSize" width="160" height="200"/>
                             <size key="estimatedItemSize" width="160" height="200"/>
@@ -60,15 +67,15 @@
                                             <imageReference key="image" image="person.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="49"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walter White" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bl-OV-q0n">
-                                            <rect key="frame" x="0.0" y="170" width="160" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walter White" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bl-OV-q0n">
+                                            <rect key="frame" x="12" y="170" width="148" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5bl-OV-q0n" firstAttribute="leading" secondItem="Gsk-qG-bKR" secondAttribute="leading" id="Ndz-HC-mAh"/>
+                                        <constraint firstItem="5bl-OV-q0n" firstAttribute="leading" secondItem="Gsk-qG-bKR" secondAttribute="leading" constant="12" id="Ndz-HC-mAh"/>
                                         <constraint firstItem="yNs-i5-wCK" firstAttribute="top" secondItem="Gsk-qG-bKR" secondAttribute="top" id="UoC-1d-lz3"/>
                                         <constraint firstItem="yNs-i5-wCK" firstAttribute="leading" secondItem="Gsk-qG-bKR" secondAttribute="leading" id="fO4-01-L3W"/>
                                         <constraint firstItem="5bl-OV-q0n" firstAttribute="top" secondItem="yNs-i5-wCK" secondAttribute="bottom" constant="10" id="mJp-Au-ygT"/>
@@ -89,7 +96,7 @@
                             <outlet property="delegate" destination="8Pr-Sn-eFl" id="GXO-nD-UGq"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Breaking Bad" id="3Xd-r0-KFc"/>
+                    <navigationItem key="navigationItem" title="Characters" id="3Xd-r0-KFc"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMp-Nz-xh8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

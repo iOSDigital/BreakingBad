@@ -26,7 +26,7 @@ class CharactersViewController: UICollectionViewController {
 			self.collectionView.reloadSections(IndexSet(0...0))
 		}
 	}
-
+	
     /*
     // MARK: - Navigation
 
@@ -90,24 +90,25 @@ class CharactersViewController: UICollectionViewController {
 
 }
 
-
-class CharactersCell: UICollectionViewCell {
-	@IBOutlet var imageView: UIImageView!
-	@IBOutlet var nameLabel: UILabel!
-	
-	var character: Character? {
-		didSet {
-			self.nameLabel.text = character?.name
-			
-			if let cImage = character?.image {
-				let imageURL = URL(string: cImage)
-				self.imageView.sd_setImage(with: imageURL) { image, error, cacheType, url in
-					self.imageView.contentMode = .scaleAspectFill
-				}
-			}
-		
-		}
+extension UICollectionView {
+	open override func awakeFromNib() {
+		super.awakeFromNib()
+		let imageView : UIImageView = {
+			let iv = UIImageView()
+			iv.image = UIImage(named:"bgSmoke")
+			iv.alpha = 0.5
+			iv.contentMode = .scaleAspectFit
+			return iv
+		}()
+		self.backgroundView = imageView
 	}
-
-	
 }
+
+
+
+
+
+
+
+
+
