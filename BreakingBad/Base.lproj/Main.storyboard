@@ -1,24 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P9z-3U-Yl5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="fHr-dm-3yO">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="P9z-3U-Yl5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X8t-ct-yOG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8Pr-Sn-eFl" kind="relationship" relationship="rootViewController" id="58F-LA-cJr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLC-OA-9km" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-376" y="93"/>
+        </scene>
+        <!--Breaking Bad-->
+        <scene sceneID="GxC-bM-g6b">
+            <objects>
+                <collectionViewController id="8Pr-Sn-eFl" customClass="CharactersViewController" customModule="BreakingBad" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8sL-M2-DQO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G61-NE-QgV">
+                            <size key="itemSize" width="160" height="200"/>
+                            <size key="estimatedItemSize" width="160" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellCharacter" id="92w-Af-08Y" customClass="CharactersCell" customModule="BreakingBad" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="160" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gsk-qG-bKR">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yNs-i5-wCK">
+                                            <rect key="frame" x="0.0" y="-1.5" width="160" height="164"/>
+                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                            <color key="tintColor" systemColor="systemGray2Color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="160" id="2M6-V2-kSc"/>
+                                                <constraint firstAttribute="width" constant="160" id="nUc-JK-hfb"/>
+                                            </constraints>
+                                            <imageReference key="image" image="person.fill" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="49"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walter White" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bl-OV-q0n">
+                                            <rect key="frame" x="0.0" y="170" width="160" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5bl-OV-q0n" firstAttribute="leading" secondItem="Gsk-qG-bKR" secondAttribute="leading" id="Ndz-HC-mAh"/>
+                                        <constraint firstItem="yNs-i5-wCK" firstAttribute="top" secondItem="Gsk-qG-bKR" secondAttribute="top" id="UoC-1d-lz3"/>
+                                        <constraint firstItem="yNs-i5-wCK" firstAttribute="leading" secondItem="Gsk-qG-bKR" secondAttribute="leading" id="fO4-01-L3W"/>
+                                        <constraint firstItem="5bl-OV-q0n" firstAttribute="top" secondItem="yNs-i5-wCK" secondAttribute="bottom" constant="10" id="mJp-Au-ygT"/>
+                                        <constraint firstAttribute="trailing" secondItem="yNs-i5-wCK" secondAttribute="trailing" id="qww-tt-8PH"/>
+                                        <constraint firstAttribute="trailing" secondItem="5bl-OV-q0n" secondAttribute="trailing" id="vzg-zV-r8a"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="customSize" width="160" height="200"/>
+                                <connections>
+                                    <outlet property="imageView" destination="yNs-i5-wCK" id="8iF-3A-Sxo"/>
+                                    <outlet property="nameLabel" destination="5bl-OV-q0n" id="vYp-wk-Abk"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="8Pr-Sn-eFl" id="CzC-6s-2Uj"/>
+                            <outlet property="delegate" destination="8Pr-Sn-eFl" id="GXO-nD-UGq"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Breaking Bad" id="3Xd-r0-KFc"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zMp-Nz-xh8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663.768115942029" y="91.741071428571431"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
