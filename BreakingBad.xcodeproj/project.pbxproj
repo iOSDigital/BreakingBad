@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		669B68232652424C00533042 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68222652424C00533042 /* APIResource.swift */; };
 		669B68252652455600533042 /* APINetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68242652455600533042 /* APINetworkRequest.swift */; };
 		669B6827265246BC00533042 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B6826265246BC00533042 /* APIRequest.swift */; };
+		669B682A26525BE100533042 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 669B682926525BE100533042 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669B682A26525BE100533042 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +185,9 @@
 			dependencies = (
 			);
 			name = BreakingBad;
+			packageProductDependencies = (
+				669B682926525BE100533042 /* SDWebImage */,
+			);
 			productName = BreakingBad;
 			productReference = 669B67E72652398000533042 /* BreakingBad.app */;
 			productType = "com.apple.product-type.application";
@@ -254,6 +259,9 @@
 				Base,
 			);
 			mainGroup = 669B67DE2652398000533042;
+			packageReferences = (
+				669B682826525BE100533042 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 669B67E82652398000533042 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -639,6 +647,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		669B682826525BE100533042 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		669B682926525BE100533042 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 669B682826525BE100533042 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		669B67F32652398000533042 /* BreakingBad.xcdatamodeld */ = {
