@@ -16,6 +16,7 @@
 		669B67FA2652398D00533042 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669B67F82652398D00533042 /* LaunchScreen.storyboard */; };
 		669B68052652398D00533042 /* BreakingBadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68042652398D00533042 /* BreakingBadTests.swift */; };
 		669B68102652398D00533042 /* BreakingBadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B680F2652398D00533042 /* BreakingBadUITests.swift */; };
+		669B682026523AC000533042 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B681F26523AC000533042 /* Character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		669B680B2652398D00533042 /* BreakingBadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreakingBadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		669B680F2652398D00533042 /* BreakingBadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakingBadUITests.swift; sourceTree = "<group>"; };
 		669B68112652398D00533042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		669B681F26523AC000533042 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,9 @@
 		669B67DE2652398000533042 = {
 			isa = PBXGroup;
 			children = (
+				669B681D265239AC00533042 /* Startup */,
 				669B67E92652398000533042 /* BreakingBad */,
+				669B67F62652398D00533042 /* Assets.xcassets */,
 				669B68032652398D00533042 /* BreakingBadTests */,
 				669B680E2652398D00533042 /* BreakingBadUITests */,
 				669B67E82652398000533042 /* Products */,
@@ -101,14 +105,9 @@
 		669B67E92652398000533042 /* BreakingBad */ = {
 			isa = PBXGroup;
 			children = (
-				669B67EA2652398000533042 /* AppDelegate.swift */,
-				669B67EC2652398000533042 /* SceneDelegate.swift */,
-				669B67EE2652398000533042 /* ViewController.swift */,
 				669B67F02652398000533042 /* Main.storyboard */,
-				669B67F62652398D00533042 /* Assets.xcassets */,
-				669B67F82652398D00533042 /* LaunchScreen.storyboard */,
-				669B67FB2652398D00533042 /* Info.plist */,
-				669B67F32652398000533042 /* BreakingBad.xcdatamodeld */,
+				669B67EE2652398000533042 /* ViewController.swift */,
+				669B681E26523A3A00533042 /* Models */,
 			);
 			path = BreakingBad;
 			sourceTree = "<group>";
@@ -129,6 +128,26 @@
 				669B68112652398D00533042 /* Info.plist */,
 			);
 			path = BreakingBadUITests;
+			sourceTree = "<group>";
+		};
+		669B681D265239AC00533042 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				669B67FB2652398D00533042 /* Info.plist */,
+				669B67F82652398D00533042 /* LaunchScreen.storyboard */,
+				669B67EA2652398000533042 /* AppDelegate.swift */,
+				669B67EC2652398000533042 /* SceneDelegate.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		669B681E26523A3A00533042 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				669B67F32652398000533042 /* BreakingBad.xcdatamodeld */,
+				669B681F26523AC000533042 /* Character.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +282,7 @@
 			files = (
 				669B67EF2652398000533042 /* ViewController.swift in Sources */,
 				669B67EB2652398000533042 /* AppDelegate.swift in Sources */,
+				669B682026523AC000533042 /* Character.swift in Sources */,
 				669B67F52652398000533042 /* BreakingBad.xcdatamodeld in Sources */,
 				669B67ED2652398000533042 /* SceneDelegate.swift in Sources */,
 			);
@@ -442,7 +462,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJ997HVTPM;
-				INFOPLIST_FILE = BreakingBad/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Startup/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +471,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = derbs.BreakingBad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -461,7 +482,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJ997HVTPM;
-				INFOPLIST_FILE = BreakingBad/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Startup/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,7 +491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = derbs.BreakingBad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
