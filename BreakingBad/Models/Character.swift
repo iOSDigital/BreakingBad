@@ -29,13 +29,20 @@ extension Character: Codable {
 		case betterCallSaulAppearance = "better_call_saul_appearance"
 		case name, birthday, occupation, status, nickname, appearance, portrayed, category
 	}
+	
+	var imageURL: URL? {
+		if let cImage = self.image {
+			let imageURL = URL(string: cImage)
+			return imageURL
+		}
+		return nil
+	}
 }
 
 struct CharactersResource: APIResource {
 	typealias ModelType = Character
 	var path = "/characters"
 }
-
 
 class CharactersDataModel {
 	var characters: [Character] = []
@@ -47,8 +54,16 @@ class CharactersDataModel {
 		self.request = request
 		request.execute { characters in
 			completion(characters ?? [])
-//			self.characters = characters ?? []
 		}
 	}
 	typealias AllCharactersCompletion = ((_ characters: [Character]) -> Void)
+}
+
+enum CharacterOptionsSortOrder {
+	case AtoZ
+	case Default
+}
+enum CharacterOptionsLayout {
+	case Grid
+	case Row
 }

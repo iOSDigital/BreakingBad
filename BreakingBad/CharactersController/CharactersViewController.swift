@@ -11,6 +11,7 @@ import SDWebImage
 
 class CharactersViewController: UICollectionViewController, CharactersOptionsControllerDelegate {
 	
+	
 	let charactersModel = CharactersDataModel()
 	var characters = [Character]()
 	var characterOptionsPopover: CharactersOptionsController?
@@ -104,17 +105,20 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 	
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let character = characters[indexPath.row]
-		
+		let detailController = self.storyboard?.instantiateViewController(identifier: "CharactersDetailViewController") as! CharactersDetailViewController
+		detailController.modalPresentationStyle = .automatic
+		self.present(detailController, animated: true)
+		detailController.character = character
 	}
 	
 	
 	// MARK: - CharactersOptionsControllerDelegate
-	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder) {
+	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder, sender: CharactersOptionsController) {
 		self.sortOrder = sortOrder
 		self.sortData()
 	}
 	
-	func changeLayout(_ layout: CharacterOptionsLayout) {
+	func changeLayout(_ layout: CharacterOptionsLayout, sender: CharactersOptionsController) {
 		var fraction: CGFloat = 1/1
 		switch layout {
 			case .Grid:
@@ -124,6 +128,10 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		}
 		collectionView.collectionViewLayout = compositionalLayout(fraction: fraction)
 		self.collectionView.reloadSections(IndexSet(0...0))
+	}
+
+	func refreshCharacters(_ sender: CharactersOptionsController) {
+		//TODO
 	}
 
 	

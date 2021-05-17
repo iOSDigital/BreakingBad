@@ -18,34 +18,22 @@ class CharactersOptionsController: UITableViewController {
 	
 	@IBAction func sortOrderAction(_ sender: UISegmentedControl) {
 		let sortOrder: CharacterOptionsSortOrder = (sender.selectedSegmentIndex == 0) ? .Default : .AtoZ
-		self.delegate?.changeSortOrder(sortOrder)
+		self.delegate?.changeSortOrder(sortOrder, sender: self)
 	}
 	
 	@IBAction func layoutAction(_ sender: UISegmentedControl) {
 		let layout: CharacterOptionsLayout = (sender.selectedSegmentIndex == 0) ? .Row : .Grid
-		self.delegate?.changeLayout(layout)
+		self.delegate?.changeLayout(layout, sender: self)
 	}
 	
 	@IBAction func refreshAction(_ sender: UIButton) {
 		
 	}
 
-
-}
-
-
-
-
-enum CharacterOptionsSortOrder {
-	case AtoZ
-	case Default
-}
-enum CharacterOptionsLayout {
-	case Grid
-	case Row
 }
 
 protocol CharactersOptionsControllerDelegate {
-	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder)
-	func changeLayout(_ layout: CharacterOptionsLayout)
+	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder, sender: CharactersOptionsController)
+	func changeLayout(_ layout: CharacterOptionsLayout, sender: CharactersOptionsController)
+	func refreshCharacters(_ sender: CharactersOptionsController)
 }
