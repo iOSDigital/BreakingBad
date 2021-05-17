@@ -9,35 +9,68 @@ import UIKit
 import SDWebImage
 
 
-class CharactersViewController: UICollectionViewController {
+class CharactersViewController: UICollectionViewController, CharactersOptionsControllerDelegate {
 	
 	let charactersModel = CharactersDataModel()
 	var characters = [Character]()
+	var characterOptionsPopover: CharactersOptionsController?
+	var sortOrder: OptionsSortOrder = .Default
 	
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		collectionView.collectionViewLayout = compositionalLayout()
+		characterOptionsPopover = self.storyboard?.instantiateViewController(identifier: "OptionsPopover") as? CharactersOptionsController
+		characterOptionsPopover?.delegate = self
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		charactersModel.allCharacters { characters in
-			self.characters = characters
-			self.collectionView.reloadSections(IndexSet(0...0))
-		}
+		loadData()
 	}
 	
-    /*
-    // MARK: - Navigation
+	func loadData() {
+		charactersModel.allCharacters { characters in
+			self.characters = characters
+			self.sortData()
+			self.collectionView.reloadSections(IndexSet(0...0))
+		}
+		
+	}
+	
+	func sortData() {
+		self.characters.sort { c1, c2 in
+			var isSorted = false
+			
+			if self.sortOrder == .AtoZ {
+				if let first = c1.name, let second = c2.name {
+					isSorted = first < second
+				}
+			} else if self.sortOrder == .Default {
+				isSorted = c1.id < c2.id
+			}
+			return isSorted
+		}
+		self.collectionView.reloadSections(IndexSet(0...0))
+	}
+	
+	@IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
+		guard let popover = characterOptionsPopover else { return }
+		showPopup(popover, sourceView: sender.view!)
+	}
+	
+		
+	private func showPopup(_ controller: UIViewController, sourceView: UIView) {
+		let presentationController = AlwaysPresentAsPopover.configurePresentation(forController: controller)
+		presentationController.sourceView = sourceView
+		presentationController.sourceRect = sourceView.bounds
+		presentationController.permittedArrowDirections = [.down, .up]
+		self.present(controller, animated: true)
+	}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
 
-    // MARK: UICollectionViewDataSource
+	// MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
@@ -57,58 +90,42 @@ class CharactersViewController: UICollectionViewController {
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
-}
-
-extension UICollectionView {
-	open override func awakeFromNib() {
-		super.awakeFromNib()
-		let imageView : UIImageView = {
-			let iv = UIImageView()
-			iv.image = UIImage(named:"bgSmoke")
-			iv.alpha = 0.5
-			iv.contentMode = .scaleAspectFit
-			return iv
-		}()
-		self.backgroundView = imageView
+    // MARK: - UICollectionViewDelegate
+	func compositionalLayout(fraction: CGFloat = 1/2) -> UICollectionViewCompositionalLayout {
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fraction), heightDimension: .fractionalHeight(1))
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(fraction))
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+		let section = NSCollectionLayoutSection(group: group)
+		return UICollectionViewCompositionalLayout(section: section)
 	}
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let character = characters[indexPath.row]
+		
+	}
+	
+	
+	// MARK: - CharactersOptionsControllerDelegate
+	func changeSortOrder(_ sortOrder: OptionsSortOrder) {
+		self.sortOrder = sortOrder
+		self.sortData()
+	}
+	
+	func changeLayout(_ layout: OptionsLayout) {
+		var fraction: CGFloat = 1/1
+		switch layout {
+			case .Grid:
+				fraction = 1/2
+			case .Row:
+				fraction = 1/1
+		}
+		collectionView.collectionViewLayout = compositionalLayout(fraction: fraction)
+		self.collectionView.reloadSections(IndexSet(0...0))
+	}
+
+	
+	
 }
-
-
-
-
-
-
-
 
 

@@ -23,6 +23,8 @@
 		669B682C26525E6500533042 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B682B26525E6500533042 /* CharactersViewController.swift */; };
 		669B682F2652762500533042 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B682E2652762500533042 /* UIKit+Extensions.swift */; };
 		669B6832265277C900533042 /* CharactersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B6831265277C900533042 /* CharactersCell.swift */; };
+		669B68342652870900533042 /* AlwaysShowPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68332652870900533042 /* AlwaysShowPopup.swift */; };
+		669B683626528CA800533042 /* CharactersOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B683526528CA800533042 /* CharactersOptionsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		669B682B26525E6500533042 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		669B682E2652762500533042 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
 		669B6831265277C900533042 /* CharactersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCell.swift; sourceTree = "<group>"; };
+		669B68332652870900533042 /* AlwaysShowPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysShowPopup.swift; sourceTree = "<group>"; };
+		669B683526528CA800533042 /* CharactersOptionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersOptionsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,7 @@
 		669B682D2652760E00533042 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				669B68332652870900533042 /* AlwaysShowPopup.swift */,
 				669B682E2652762500533042 /* UIKit+Extensions.swift */,
 			);
 			path = Extensions;
@@ -187,6 +192,7 @@
 			children = (
 				669B682B26525E6500533042 /* CharactersViewController.swift */,
 				669B6831265277C900533042 /* CharactersCell.swift */,
+				669B683526528CA800533042 /* CharactersOptionsController.swift */,
 			);
 			path = CharactersController;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669B683626528CA800533042 /* CharactersOptionsController.swift in Sources */,
 				669B682C26525E6500533042 /* CharactersViewController.swift in Sources */,
 				669B68252652455600533042 /* APINetworkRequest.swift in Sources */,
 				669B67EB2652398000533042 /* AppDelegate.swift in Sources */,
@@ -335,6 +342,7 @@
 				669B682F2652762500533042 /* UIKit+Extensions.swift in Sources */,
 				669B68232652424C00533042 /* APIResource.swift in Sources */,
 				669B6827265246BC00533042 /* APIRequest.swift in Sources */,
+				669B68342652870900533042 /* AlwaysShowPopup.swift in Sources */,
 				669B67ED2652398000533042 /* SceneDelegate.swift in Sources */,
 				669B6832265277C900533042 /* CharactersCell.swift in Sources */,
 			);

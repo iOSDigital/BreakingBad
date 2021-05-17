@@ -25,11 +25,4 @@ class CharactersCell: UICollectionViewCell {
 		}
 	}
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		self.imageView.layer.cornerRadius = 10.0
-		self.imageView.layer.borderWidth = 1.0
-		self.imageView.layer.borderColor = UIColor.white.cgColor
-	}
-	
 }

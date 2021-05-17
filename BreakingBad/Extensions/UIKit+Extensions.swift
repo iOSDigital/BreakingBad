@@ -9,3 +9,8 @@ import Foundation
 import UIKit
 
 
+extension UIBarButtonItem {
+	var view: UIView? {
+		return perform(#selector(getter: UIViewController.view)).takeRetainedValue() as? UIView
+	}
+}
