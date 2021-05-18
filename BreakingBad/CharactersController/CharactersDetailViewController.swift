@@ -31,5 +31,11 @@ class CharactersDetailViewController: UITableViewController {
 			appearsInLabel.text = character?.appearance?.map{ "Series " + String($0) }.joined(separator: "\n")
 		}
 	}
-
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		tableView.rowHeight = UITableView.automaticDimension
+		tableView.estimatedRowHeight = 40
+	}
+	
 }

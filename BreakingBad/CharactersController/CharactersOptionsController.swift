@@ -17,7 +17,7 @@ class CharactersOptionsController: UITableViewController {
     }
 	
 	@IBAction func sortOrderAction(_ sender: UISegmentedControl) {
-		let sortOrder: CharacterOptionsSortOrder = (sender.selectedSegmentIndex == 0) ? .Default : .AtoZ
+		let sortOrder: CharacterOptionsSortOrder = (sender.selectedSegmentIndex == 0) ? .Default : .Alphabetical
 		self.delegate?.changeSortOrder(sortOrder, sender: self)
 	}
 	
@@ -32,7 +32,7 @@ class CharactersOptionsController: UITableViewController {
 
 }
 
-protocol CharactersOptionsControllerDelegate {
+protocol CharactersOptionsControllerDelegate: AnyObject {
 	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder, sender: CharactersOptionsController)
 	func changeLayout(_ layout: CharacterOptionsLayout, sender: CharactersOptionsController)
 	func refreshCharacters(_ sender: CharactersOptionsController)

@@ -11,12 +11,13 @@ import SDWebImage
 
 class CharactersViewController: UICollectionViewController, CharactersOptionsControllerDelegate {
 	
-	
 	let charactersModel = CharactersDataModel()
 	var characters = [Character]()
 	var characterOptionsPopover: CharactersOptionsController?
 	var sortOrder: CharacterOptionsSortOrder = .Default
-	
+	var characterSearchPopover: UIViewController?
+	let loadingSpinner = UIActivityIndicatorView(style: .medium)
+
 	
 	// MARK: - Methods Body
 	override func viewDidLoad() {
@@ -24,6 +25,12 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		collectionView.collectionViewLayout = compositionalLayout()
 		characterOptionsPopover = self.storyboard?.instantiateViewController(identifier: "OptionsPopover") as? CharactersOptionsController
 		characterOptionsPopover?.delegate = self
+		characterSearchPopover = self.storyboard?.instantiateViewController(identifier: "SearchController")
+		
+		loadingSpinner.color = .white
+		loadingSpinner.hidesWhenStopped = true
+		let loadingBarItem = UIBarButtonItem(customView: loadingSpinner)
+		self.navigationItem.leftBarButtonItems?.append(loadingBarItem)
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -32,10 +39,12 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 	}
 	
 	func loadData() {
+		loadingSpinner.startAnimating()
 		charactersModel.allCharacters { characters in
 			self.characters = characters
 			self.sortData()
 			self.collectionView.reloadSections(IndexSet(0...0))
+			self.loadingSpinner.stopAnimating()
 		}
 		
 	}
@@ -44,7 +53,7 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		self.characters.sort { c1, c2 in
 			var isSorted = false
 			
-			if self.sortOrder == .AtoZ {
+			if self.sortOrder == .Alphabetical {
 				if let first = c1.name, let second = c2.name {
 					isSorted = first < second
 				}
@@ -68,6 +77,11 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		presentationController.sourceRect = sourceView.bounds
 		presentationController.permittedArrowDirections = [.down, .up]
 		self.present(controller, animated: true)
+	}
+	
+	@IBAction func searchButtonAction(_ sender: UIBarButtonItem) {
+		guard let popover = characterSearchPopover else { return }
+		showPopup(popover, sourceView: sender.view!)
 	}
 
 	

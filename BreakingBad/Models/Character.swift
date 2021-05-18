@@ -20,6 +20,7 @@ struct Character: Identifiable {
 	var portrayed: String?
 	var category: String?
 	var betterCallSaulAppearance: [Int]?
+	var isFavourite: Bool = false
 }
 
 extension Character: Codable {
@@ -60,7 +61,7 @@ class CharactersDataModel {
 }
 
 enum CharacterOptionsSortOrder {
-	case AtoZ
+	case Alphabetical
 	case Default
 }
 enum CharacterOptionsLayout {
