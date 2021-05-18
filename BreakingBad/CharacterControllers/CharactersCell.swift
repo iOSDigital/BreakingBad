@@ -10,6 +10,7 @@ import UIKit
 class CharactersCell: UICollectionViewCell {
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
+	@IBOutlet var likeButton: UIButton!
 	
 	var character: Character? {
 		didSet {
@@ -20,6 +21,10 @@ class CharactersCell: UICollectionViewCell {
 				self.imageView.sd_setImage(with: imageURL) { image, error, cacheType, url in
 					self.imageView.contentMode = .scaleAspectFill
 				}
+			}
+			
+			if let cID = character?.id {
+				likeButton.isHidden = !UserDefaults.isFavourite(cID)
 			}
 			
 		}

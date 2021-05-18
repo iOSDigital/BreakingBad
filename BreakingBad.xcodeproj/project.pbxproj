@@ -27,6 +27,11 @@
 		669B683626528CA800533042 /* CharactersOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B683526528CA800533042 /* CharactersOptionsController.swift */; };
 		669B68382652BB2600533042 /* CharactersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68372652BB2600533042 /* CharactersDetailViewController.swift */; };
 		669B683A2652C6ED00533042 /* AlignmentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68392652C6ED00533042 /* AlignmentImageView.swift */; };
+		669B683C2653B22D00533042 /* UserDefaults+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B683B2653B22D00533042 /* UserDefaults+Extenstions.swift */; };
+		669B683E2653B93700533042 /* Characters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669B683D2653B93700533042 /* Characters.storyboard */; };
+		669B68402653BF6700533042 /* Swift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B683F2653BF6700533042 /* Swift+Extensions.swift */; };
+		669B68422653C08100533042 /* CharactersSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68412653C08100533042 /* CharactersSearchController.swift */; };
+		66E5008A26540FE20081C67D /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 66E5008926540FE20081C67D /* TODO.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +77,11 @@
 		669B683526528CA800533042 /* CharactersOptionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersOptionsController.swift; sourceTree = "<group>"; };
 		669B68372652BB2600533042 /* CharactersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailViewController.swift; sourceTree = "<group>"; };
 		669B68392652C6ED00533042 /* AlignmentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentImageView.swift; sourceTree = "<group>"; };
+		669B683B2653B22D00533042 /* UserDefaults+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extenstions.swift"; sourceTree = "<group>"; };
+		669B683D2653B93700533042 /* Characters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Characters.storyboard; sourceTree = "<group>"; };
+		669B683F2653BF6700533042 /* Swift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Extensions.swift"; sourceTree = "<group>"; };
+		669B68412653C08100533042 /* CharactersSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSearchController.swift; sourceTree = "<group>"; };
+		66E5008926540FE20081C67D /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,7 @@
 		669B67DE2652398000533042 = {
 			isa = PBXGroup;
 			children = (
+				66E5008926540FE20081C67D /* TODO.md */,
 				669B681D265239AC00533042 /* Startup */,
 				669B67E92652398000533042 /* BreakingBad */,
 				669B67F62652398D00533042 /* Assets.xcassets */,
@@ -126,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				669B67F02652398000533042 /* Main.storyboard */,
-				669B6830265277AD00533042 /* CharactersController */,
+				669B6830265277AD00533042 /* CharacterControllers */,
 				669B68212652423E00533042 /* API */,
 				669B681E26523A3A00533042 /* Models */,
 				669B682D2652760E00533042 /* Extensions */,
@@ -187,20 +198,24 @@
 			children = (
 				669B68392652C6ED00533042 /* AlignmentImageView.swift */,
 				669B68332652870900533042 /* AlwaysShowPopup.swift */,
+				669B683F2653BF6700533042 /* Swift+Extensions.swift */,
 				669B682E2652762500533042 /* UIKit+Extensions.swift */,
+				669B683B2653B22D00533042 /* UserDefaults+Extenstions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		669B6830265277AD00533042 /* CharactersController */ = {
+		669B6830265277AD00533042 /* CharacterControllers */ = {
 			isa = PBXGroup;
 			children = (
+				669B683D2653B93700533042 /* Characters.storyboard */,
 				669B682B26525E6500533042 /* CharactersViewController.swift */,
 				669B6831265277C900533042 /* CharactersCell.swift */,
 				669B683526528CA800533042 /* CharactersOptionsController.swift */,
+				669B68412653C08100533042 /* CharactersSearchController.swift */,
 				669B68372652BB2600533042 /* CharactersDetailViewController.swift */,
 			);
-			path = CharactersController;
+			path = CharacterControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,9 +327,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669B683E2653B93700533042 /* Characters.storyboard in Resources */,
 				669B67FA2652398D00533042 /* LaunchScreen.storyboard in Resources */,
 				669B67F72652398D00533042 /* Assets.xcassets in Resources */,
 				669B67F22652398000533042 /* Main.storyboard in Resources */,
+				66E5008A26540FE20081C67D /* TODO.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,10 +365,13 @@
 				669B67F52652398000533042 /* BreakingBad.xcdatamodeld in Sources */,
 				669B682F2652762500533042 /* UIKit+Extensions.swift in Sources */,
 				669B68232652424C00533042 /* APIResource.swift in Sources */,
+				669B68402653BF6700533042 /* Swift+Extensions.swift in Sources */,
 				669B68382652BB2600533042 /* CharactersDetailViewController.swift in Sources */,
 				669B6827265246BC00533042 /* APIRequest.swift in Sources */,
 				669B68342652870900533042 /* AlwaysShowPopup.swift in Sources */,
 				669B67ED2652398000533042 /* SceneDelegate.swift in Sources */,
+				669B68422653C08100533042 /* CharactersSearchController.swift in Sources */,
+				669B683C2653B22D00533042 /* UserDefaults+Extenstions.swift in Sources */,
 				669B6832265277C900533042 /* CharactersCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

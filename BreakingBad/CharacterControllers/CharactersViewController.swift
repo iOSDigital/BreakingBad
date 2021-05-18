@@ -9,13 +9,14 @@ import UIKit
 import SDWebImage
 
 
-class CharactersViewController: UICollectionViewController, CharactersOptionsControllerDelegate {
+class CharactersViewController: UICollectionViewController, CharactersOptionsControllerDelegate, CharactersSearchDelegate, UIAdaptivePresentationControllerDelegate {
 	
 	let charactersModel = CharactersDataModel()
+	var originalCharacters = [Character]()
 	var characters = [Character]()
 	var characterOptionsPopover: CharactersOptionsController?
 	var sortOrder: CharacterOptionsSortOrder = .Default
-	var characterSearchPopover: UIViewController?
+	var characterSearchPopover: CharactersSearchController?
 	let loadingSpinner = UIActivityIndicatorView(style: .medium)
 
 	
@@ -23,9 +24,10 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 	override func viewDidLoad() {
         super.viewDidLoad()
 		collectionView.collectionViewLayout = compositionalLayout()
-		characterOptionsPopover = self.storyboard?.instantiateViewController(identifier: "OptionsPopover") as? CharactersOptionsController
+		characterOptionsPopover = self.storyboard?.instantiateViewController(identifier: "OptionsPopover")
 		characterOptionsPopover?.delegate = self
 		characterSearchPopover = self.storyboard?.instantiateViewController(identifier: "SearchController")
+		characterSearchPopover?.delegate = self
 		
 		loadingSpinner.color = .white
 		loadingSpinner.hidesWhenStopped = true
@@ -38,9 +40,11 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		loadData()
 	}
 	
+	// MARK: - Load, sort, search
 	func loadData() {
 		loadingSpinner.startAnimating()
 		charactersModel.allCharacters { characters in
+			self.originalCharacters = characters
 			self.characters = characters
 			self.sortData()
 			self.collectionView.reloadSections(IndexSet(0...0))
@@ -65,6 +69,16 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		self.collectionView.reloadSections(IndexSet(0...0))
 	}
 	
+	func searchTextDidChange(searchText: String) {
+		characters = originalCharacters
+		if !searchText.isEmpty {
+			let filterArray = characters.filter { $0.name?.contains(searchText) ?? false || $0.nickname?.contains(searchText) ?? false || $0.portrayed?.contains(searchText) ?? false }
+			characters = filterArray
+		}
+		self.collectionView.reloadSections(IndexSet(0...0))
+	}
+	
+	// MARK: - IBActions
 	@IBAction func optionsButtonAction(_ sender: UIBarButtonItem) {
 		guard let popover = characterOptionsPopover else { return }
 		showPopup(popover, sourceView: sender.view!)
@@ -116,15 +130,21 @@ class CharactersViewController: UICollectionViewController, CharactersOptionsCon
 		let section = NSCollectionLayoutSection(group: group)
 		return UICollectionViewCompositionalLayout(section: section)
 	}
-	
+	// New instance of detailController, injecting in the Character
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let character = characters[indexPath.row]
-		let detailController = self.storyboard?.instantiateViewController(identifier: "CharactersDetailViewController") as! CharactersDetailViewController
+		let detailController = CharactersDetailViewController.controllerWithCharacter(character: character)
 		detailController.modalPresentationStyle = .automatic
+		detailController.presentationController?.delegate = self
 		self.present(detailController, animated: true)
-		detailController.character = character
 	}
-	
+	// Find the index of the character to reload the cell (for example if it has been liked)
+	func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+		let controller = presentationController.presentedViewController as! CharactersDetailViewController
+		if let index = characters.firstIndex(of: controller.character) {
+			self.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+		}
+	}
 	
 	// MARK: - CharactersOptionsControllerDelegate
 	func changeSortOrder(_ sortOrder: CharacterOptionsSortOrder, sender: CharactersOptionsController) {

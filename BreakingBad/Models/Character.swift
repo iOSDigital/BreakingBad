@@ -10,7 +10,7 @@ import Foundation
 struct Character: Identifiable {
 	var id: Int
 	var name: String?
-	#warning("Make birthday a Date not String")
+	#warning("TODO: Make birthday a Date not String")
 	var birthday: String?
 	var occupation: [String]?
 	var image: String?
@@ -40,6 +40,12 @@ extension Character: Codable {
 	}
 }
 
+extension Character: Equatable {
+	static func == (lhs: Character, rhs: Character) -> Bool {
+		return lhs.id == rhs.id
+	}
+}
+
 struct CharactersResource: APIResource {
 	typealias ModelType = Character
 	var path = "/characters"
@@ -63,6 +69,7 @@ class CharactersDataModel {
 enum CharacterOptionsSortOrder {
 	case Alphabetical
 	case Default
+	case Liked
 }
 enum CharacterOptionsLayout {
 	case Grid
