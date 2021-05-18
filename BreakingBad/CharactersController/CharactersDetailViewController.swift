@@ -17,7 +17,7 @@ class CharactersDetailViewController: UITableViewController {
 	@IBOutlet var statusLabel: UILabel!
 	@IBOutlet var portrayedLabel: UILabel!
 	@IBOutlet var appearsInLabel: UILabel!
-
+	@IBOutlet var appearsInCell: UITableViewCell!
 	
 	var character: Character? {
 		didSet {
@@ -36,6 +36,9 @@ class CharactersDetailViewController: UITableViewController {
 		super.viewDidLoad()
 		tableView.rowHeight = UITableView.automaticDimension
 		tableView.estimatedRowHeight = 40
+		appearsInCell.sizeThatFits(CGSize(width: appearsInCell.frame.size.width, height: 250))
 	}
+	
+	
 	
 }
