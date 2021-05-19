@@ -24,7 +24,7 @@ extension Review: Codable {
 struct ReviewsResource: APIResource {
 	typealias ModelType = Review
 	var path = "/reviews"
-	var method = "POST"
+	var queryItems: [URLQueryItem]?
 }
 
 class ReviewsDataModel {
@@ -32,7 +32,11 @@ class ReviewsDataModel {
 	var request: APIRequest<ReviewsResource>?
 	
 	public func postReview(review: Review, completion: @escaping PostReviewCompletion) {
-		let resource = ReviewsResource()
+		var resource = ReviewsResource()
+		resource.queryItems = [
+			URLQueryItem(name: "limit", value: "100"),
+			URLQueryItem(name: "offset", value: "0")
+		]
 		let request = APIRequest(resource: resource)
 		self.request = request
 		
@@ -49,7 +53,8 @@ class ReviewsDataModel {
 		print("postReview!")
 	}
 	typealias PostReviewCompletion = ((_ result: Result<HTTPURLResponse, APIError>) -> Void)
-	
+	typealias LoadReviewsCompletion = ((_ reviews: [Review]) -> Void)
+
 }
 
 

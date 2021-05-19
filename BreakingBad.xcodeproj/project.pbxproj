@@ -33,6 +33,7 @@
 		669B68422653C08100533042 /* CharactersSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B68412653C08100533042 /* CharactersSearchController.swift */; };
 		66E5008A26540FE20081C67D /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 66E5008926540FE20081C67D /* TODO.md */; };
 		66E5008C2654DC120081C67D /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E5008B2654DC120081C67D /* Review.swift */; };
+		66E500D7265500200081C67D /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E500D6265500200081C67D /* Quote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		669B68412653C08100533042 /* CharactersSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSearchController.swift; sourceTree = "<group>"; };
 		66E5008926540FE20081C67D /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		66E5008B2654DC120081C67D /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		66E500D6265500200081C67D /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				669B67F32652398000533042 /* BreakingBad.xcdatamodeld */,
 				669B681F26523AC000533042 /* Character.swift */,
+				66E500D6265500200081C67D /* Quote.swift */,
 				66E5008B2654DC120081C67D /* Review.swift */,
 			);
 			path = Models;
@@ -370,6 +373,7 @@
 				669B68232652424C00533042 /* APIResource.swift in Sources */,
 				669B68402653BF6700533042 /* Swift+Extensions.swift in Sources */,
 				669B68382652BB2600533042 /* CharactersDetailViewController.swift in Sources */,
+				66E500D7265500200081C67D /* Quote.swift in Sources */,
 				66E5008C2654DC120081C67D /* Review.swift in Sources */,
 				669B6827265246BC00533042 /* APIRequest.swift in Sources */,
 				669B68342652870900533042 /* AlwaysShowPopup.swift in Sources */,

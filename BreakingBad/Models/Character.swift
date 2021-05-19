@@ -49,6 +49,7 @@ extension Character: Equatable {
 struct CharactersResource: APIResource {
 	typealias ModelType = Character
 	var path = "/characters"
+	var queryItems: [URLQueryItem]?
 }
 
 class CharactersDataModel {
@@ -56,7 +57,12 @@ class CharactersDataModel {
 	var request: APIRequest<CharactersResource>?
 	
 	public func allCharacters(completion: @escaping AllCharactersCompletion) {
-		let resource = CharactersResource()
+		var resource = CharactersResource()
+		resource.queryItems = [
+			URLQueryItem(name: "limit", value: "100"),
+			URLQueryItem(name: "offset", value: "0")
+		]
+
 		let request = APIRequest(resource: resource)
 		self.request = request
 		request.execute { characters in

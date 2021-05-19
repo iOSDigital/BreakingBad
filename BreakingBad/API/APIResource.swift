@@ -10,16 +10,19 @@ import Foundation
 protocol APIResource {
 	associatedtype ModelType: Decodable
 	var path: String { get }
+	var queryItems: [URLQueryItem]? { get }
 }
 
 extension APIResource {
+	
 	var url: URL {
 		var components = URLComponents(string: "https://www.breakingbadapi.com/api")!
 		components.path = components.path.appending(path)
-		components.queryItems = [
-			URLQueryItem(name: "limit", value: "100"),
-			URLQueryItem(name: "offset", value: "0")
-		]
+		components.queryItems = queryItems
+//		components.queryItems = [
+//			URLQueryItem(name: "limit", value: "100"),
+//			URLQueryItem(name: "offset", value: "0")
+//		]
 		return components.url!
 	}
 }
