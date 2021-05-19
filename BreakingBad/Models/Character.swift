@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character: Identifiable {
+class Character: Codable, Identifiable {
 	var id: Int
 	var name: String?
 	#warning("TODO: Make birthday a Date not String")
@@ -21,9 +21,10 @@ struct Character: Identifiable {
 	var category: String?
 	var betterCallSaulAppearance: [Int]?
 	var isFavourite: Bool = false
+	var quotes: [Quote]?
 }
 
-extension Character: Codable {
+extension Character {
 	enum CodingKeys: String, CodingKey {
 		case id = "char_id"
 		case image = "img"
@@ -47,6 +48,7 @@ extension Character: Equatable {
 }
 
 struct CharactersResource: APIResource {
+	var modelName = "Character"
 	typealias ModelType = Character
 	var path = "/characters"
 	var queryItems: [URLQueryItem]?

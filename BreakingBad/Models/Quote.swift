@@ -21,6 +21,7 @@ extension Quote: Codable {
 }
 
 struct QuotesResource: APIResource {
+	var modelName = "Quote"
 	typealias ModelType = Quote
 	var path = "/quote"
 	var queryItems: [URLQueryItem]?

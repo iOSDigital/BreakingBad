@@ -22,6 +22,7 @@ extension Review: Codable {
 }
 
 struct ReviewsResource: APIResource {
+	var modelName = "Review"
 	typealias ModelType = Review
 	var path = "/reviews"
 	var queryItems: [URLQueryItem]?

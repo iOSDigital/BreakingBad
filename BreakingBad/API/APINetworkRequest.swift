@@ -25,14 +25,12 @@ extension APINetworkRequest {
 	func load(_ url: URL, withCompletion completion: @escaping (ModelType?) -> Void) {
 
 		let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response , error) -> Void in
-			//print("Load: \(url.absoluteString)")
-			//print("Data: \(String(decoding: data!, as: UTF8.self))")
-			
 			guard let data = data else {
 				DispatchQueue.main.async { completion(nil) }
 				return
 			}
 			do {
+				// Decode the JSON into Objects
 				let value = try self?.decode(data)
 				DispatchQueue.main.async { completion(value) }
 			} catch {

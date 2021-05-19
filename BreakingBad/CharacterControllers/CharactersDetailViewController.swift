@@ -10,9 +10,7 @@ import UIKit
 class CharactersDetailViewController: UITableViewController {
 	
 	var character: Character!
-	
 	let quotesDataModel = QuotesDataModel()
-	var quotesArray = [Quote]()
 	
 	@IBOutlet var quoteLabel: UILabel!
 	@IBOutlet var reviewName: UITextField!
@@ -91,13 +89,14 @@ class CharactersDetailViewController: UITableViewController {
 	}
 	
 	func loadQuotes() {
+		if character.quotes != nil { self.newQuote(nil); return }
 		quotesDataModel.allQuotesFor(character: character) { quotes in
-			self.quotesArray = quotes
+			self.character.quotes = quotes
 			self.newQuote(nil)
 		}
 	}
 	@IBAction func newQuote(_ sender: AnyObject?) {
-		self.quoteLabel.text = self.quotesArray.shuffled().first?.quote
+		self.quoteLabel.text = character.quotes?.shuffled().first?.quote
 	}
 	
 	@IBAction func postReviewAction(_ sender: UIButton) {
@@ -134,7 +133,7 @@ class CharactersDetailViewController: UITableViewController {
 	#warning("Layout constraint errors")
 	@IBAction func quotesButtonAction(_ sender: UIButton) {
 		if cellHeights[8] == 0 {
-			if quotesArray.count > 0 {
+			if character.quotes?.count ?? 0 > 0 {
 				cellHeights[8] = 100
 			}
 		} else {
@@ -144,7 +143,7 @@ class CharactersDetailViewController: UITableViewController {
 		self.tableView.reloadData()
 		self.tableView.endUpdates()
 	}
-	@IBAction func reviewButtonAction(_ sender: UIButton) {
+	@IBAction func reviewButtonAction(_ sender: UIButton?) {
 		if cellHeights[10] == 0 {
 			cellHeights[10] = 240
 			self.reviewName.perform(#selector(becomeFirstResponder), with: nil, afterDelay: 0.1)
