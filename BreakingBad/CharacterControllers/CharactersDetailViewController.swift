@@ -31,7 +31,7 @@ class CharactersDetailViewController: UITableViewController {
 	#warning("Hacky cell height thing")
 	var cellHeights = [350, 40, 40, 40, 40, 40, 40, 40, 0, 40, 0]
 	
-	public class func controllerWithCharacter(   character: Character) -> CharactersDetailViewController {
+	public class func controllerWithCharacter(character: Character) -> CharactersDetailViewController {
 		let controller = UIStoryboard(name: "Characters", bundle: nil).instantiateViewController(identifier: "CharactersDetailViewController") as! CharactersDetailViewController
 		controller.character = character
 		return controller
@@ -129,7 +129,9 @@ class CharactersDetailViewController: UITableViewController {
 	#warning("Layout constraint errors")
 	@IBAction func quotesButtonAction(_ sender: UIButton) {
 		if cellHeights[8] == 0 {
-			cellHeights[8] = 100
+			if quotesArray.count > 0 {
+				cellHeights[8] = 100
+			}
 		} else {
 			cellHeights[8] = 0
 		}
