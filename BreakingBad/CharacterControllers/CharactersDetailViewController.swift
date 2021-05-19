@@ -10,6 +10,10 @@ import UIKit
 class CharactersDetailViewController: UITableViewController {
 	var character: Character!
 	
+	let quotesDataModel = QuotesDataModel()
+	var quotesArray = [Quote]()
+	
+	@IBOutlet var quoteLabel: UILabel!
 	@IBOutlet var reviewName: UITextField!
 	@IBOutlet var reviewDate: UIDatePicker!
 	@IBOutlet var reviewTextView: UITextView!
@@ -36,6 +40,11 @@ class CharactersDetailViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		commonInit()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		loadQuotes()
 	}
 	
 	private func commonInit() {
@@ -74,6 +83,16 @@ class CharactersDetailViewController: UITableViewController {
 	
 	@IBAction func datePickerAction(_ sender: UIDatePicker) {
 		self.dismiss(animated: true, completion: nil)
+	}
+	
+	func loadQuotes() {
+		quotesDataModel.allQuotesFor(character: character) { quotes in
+			self.quotesArray = quotes
+			self.newQuote(nil)
+		}
+	}
+	@IBAction func newQuote(_ sender: AnyObject?) {
+		self.quoteLabel.text = self.quotesArray.shuffled().first?.quote
 	}
 	
 	@IBAction func postReviewAction(_ sender: UIButton) {

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Lz-9D-wHc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -228,7 +227,7 @@
                                                     <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="QUOTES">
                                                         <color key="titleColor" name="AccentColor"/>
-                                                        <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                                                        <imageReference key="image" image="quote.bubble" catalog="system" symbolScale="large"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="quotesButtonAction:" destination="PB8-JF-I1D" eventType="touchUpInside" id="30k-za-ECf"/>
@@ -250,13 +249,42 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbY-9O-gjw">
+                                                    <rect key="frame" x="374" y="30" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="hjI-rp-iwI"/>
+                                                        <constraint firstAttribute="width" constant="40" id="vMV-T5-8aa"/>
+                                                    </constraints>
+                                                    <state key="normal" image="shuffle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="newQuote:" destination="PB8-JF-I1D" eventType="touchUpInside" id="w2j-cS-D4T"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAt-Br-qIx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="92"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="76"/>
+                                                    <color key="textColor" systemColor="systemGray4Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="”" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-Jl-qsQ">
+                                                    <rect key="frame" x="380" y="54" width="34" height="92"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="76"/>
+                                                    <color key="textColor" systemColor="systemGray4Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dBw-Zg-VwW" secondAttribute="trailing" constant="11" id="5D6-LJ-5Nr"/>
+                                                <constraint firstAttribute="bottom" secondItem="oFN-Jl-qsQ" secondAttribute="bottom" constant="-46" id="Bl4-Lj-edr"/>
+                                                <constraint firstItem="iAt-Br-qIx" firstAttribute="top" secondItem="38s-CO-fUb" secondAttribute="top" id="LE4-7n-wGw"/>
                                                 <constraint firstItem="dBw-Zg-VwW" firstAttribute="bottom" secondItem="38s-CO-fUb" secondAttribute="bottomMargin" id="Mw6-k3-nTc"/>
+                                                <constraint firstItem="YbY-9O-gjw" firstAttribute="centerY" secondItem="38s-CO-fUb" secondAttribute="centerY" id="Oxe-Hf-quv"/>
+                                                <constraint firstAttribute="trailing" secondItem="oFN-Jl-qsQ" secondAttribute="trailing" id="QCM-WF-5Ce"/>
                                                 <constraint firstItem="dBw-Zg-VwW" firstAttribute="leading" secondItem="38s-CO-fUb" secondAttribute="leadingMargin" constant="12" id="RRt-Hy-0cE"/>
+                                                <constraint firstAttribute="trailing" secondItem="YbY-9O-gjw" secondAttribute="trailing" id="T0x-D6-11R"/>
                                                 <constraint firstItem="dBw-Zg-VwW" firstAttribute="top" secondItem="38s-CO-fUb" secondAttribute="topMargin" id="lUJ-al-kSx"/>
+                                                <constraint firstItem="iAt-Br-qIx" firstAttribute="leading" secondItem="38s-CO-fUb" secondAttribute="leading" id="mDH-eb-7bS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -386,6 +414,7 @@
                         <outlet property="nicknameLabel" destination="qYP-R3-cq1" id="PzE-Z8-GZp"/>
                         <outlet property="occupationLabel" destination="YKE-Le-GCw" id="aBf-uZ-aL5"/>
                         <outlet property="portrayedLabel" destination="okd-G5-p6Y" id="RVe-dJ-MZe"/>
+                        <outlet property="quoteLabel" destination="dBw-Zg-VwW" id="e0H-hU-N7t"/>
                         <outlet property="reviewDate" destination="y0j-Ul-STT" id="R2S-q0-Haw"/>
                         <outlet property="reviewName" destination="9mc-7u-hPF" id="fP3-tR-J8k"/>
                         <outlet property="reviewTextView" destination="NdK-uQ-MIy" id="WRY-oW-QxP"/>
@@ -649,6 +678,8 @@
         <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="quote.bubble" catalog="system" width="128" height="110"/>
+        <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
@@ -668,6 +699,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

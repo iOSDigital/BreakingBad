@@ -22,13 +22,28 @@ protocol APINetworkRequest: AnyObject {
 extension APINetworkRequest {
 	
 	func load(_ url: URL, withCompletion completion: @escaping (ModelType?) -> Void) {
+
 		let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response , error) -> Void in
+			print("Load: \(url.absoluteString)")
+			print("Data: \(String(decoding: data!, as: UTF8.self))")
 			
-			guard let data = data, let value = try? self?.decode(data) else {
+			guard let data = data else {
 				DispatchQueue.main.async { completion(nil) }
 				return
 			}
-			DispatchQueue.main.async { completion(value) }
+			do {
+				let value = try self?.decode(data)
+				DispatchQueue.main.async { completion(value) }
+			} catch {
+				print("Error")
+			}
+			
+			
+//			guard let data = data, let value = try? self?.decode(data) else {
+//				DispatchQueue.main.async { completion(nil) }
+//				return
+//			}
+//			DispatchQueue.main.async { completion(value) }
 		}
 		task.resume()
 	}

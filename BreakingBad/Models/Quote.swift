@@ -7,14 +7,15 @@
 import Foundation
 
 struct Quote: Identifiable {
-	var id: String
+	var id: Int
 	var quote: String?
 	var author: String?
+	var series: String?
 }
 
 extension Quote: Codable {
 	enum CodingKeys: String, CodingKey {
-		case quote, author
+		case quote, author, series
 		case id = "quote_id"
 	}
 }
@@ -26,20 +27,22 @@ struct QuotesResource: APIResource {
 }
 
 class QuotesDataModel {
-	var reviews: [Review] = []
+	var quotes: [Quote] = []
 	var request: APIRequest<QuotesResource>?
 	
-	public func allQuotesForCharacter(_ character: Character, completion: @escaping LoadQuotesCompletion) {
+	public func allQuotesFor(character: Character, completion: @escaping LoadQuotesCompletion) {
 		var resource = QuotesResource()
-		var queryString = character.name?.replacingOccurrences(of: " ", with: "+")
+		let queryString = character.name?.replacingOccurrences(of: " ", with: "+")
 		resource.queryItems = [
-			URLQueryItem(name: "author", value: queryString)
+			URLQueryItem(name: "author", value: queryString),
+			URLQueryItem(name: "limit", value: "100"),
+			URLQueryItem(name: "offset", value: "0")
 		]
 		
 		let request = APIRequest(resource: resource)
 		self.request = request
-		request.execute { reviews in
-			completion(reviews ?? [])
+		request.execute { quotes in
+			completion(quotes ?? [])
 		}
 		
 	}

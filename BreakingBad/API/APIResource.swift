@@ -19,10 +19,6 @@ extension APIResource {
 		var components = URLComponents(string: "https://www.breakingbadapi.com/api")!
 		components.path = components.path.appending(path)
 		components.queryItems = queryItems
-//		components.queryItems = [
-//			URLQueryItem(name: "limit", value: "100"),
-//			URLQueryItem(name: "offset", value: "0")
-//		]
 		return components.url!
 	}
 }
