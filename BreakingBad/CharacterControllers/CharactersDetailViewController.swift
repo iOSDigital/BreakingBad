@@ -10,6 +10,8 @@ import UIKit
 class CharactersDetailViewController: UITableViewController {
 	var character: Character!
 	
+	@IBOutlet var reviewName: UITextField!
+	@IBOutlet var reviewDate: UITextField!
 	@IBOutlet var reviewTextView: UITextView!
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
@@ -70,6 +72,25 @@ class CharactersDetailViewController: UITableViewController {
 		}
 	}
 	
+	@IBAction func postReviewAction(_ sender: UIButton) {
+		if let name = reviewName.text, let date = reviewDate.text, let reviewBody = reviewTextView.text {
+			let review = Review(id: UUID().uuidString, characterID: character.id, name: name, watchDate: date, reviewBody: reviewBody)
+			
+			ReviewsDataModel().postReview(review: review) { result in
+				switch result {
+					case .success(let response):
+						print("SUCCESS")
+					case .failure(let error):
+						print(error.localizedDescription)
+						let alert = UIAlertController.simpleErrorAlert(title: "Sorry, an error has occured", body: "Your review was unable to be posted.")
+						self.present(alert, animated: true, completion: nil)
+				}
+			}
+		}
+	}
+	
+	
+	//MARK: - TableView Delegate
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		let cgHeight = CGFloat(cellHeights[indexPath.row])
 		return cgHeight

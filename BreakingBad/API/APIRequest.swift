@@ -36,5 +36,10 @@ extension APIRequest: APINetworkRequest {
 	func execute(withCompletion completion: @escaping ([Resource.ModelType]?) -> Void) {
 		load(resource.url, withCompletion: completion)
 	}
+	
+	func post(_ data: Data, withCompletion completion: @escaping (Result<HTTPURLResponse, APIError>) -> Void) {
+		post(resource.url, data: data, withCompletion: completion)
+	}
+
 
 }

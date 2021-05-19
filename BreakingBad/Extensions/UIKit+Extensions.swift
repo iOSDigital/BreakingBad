@@ -37,5 +37,11 @@ extension UIColor {
 	}
 }
 
-
-
+extension UIAlertController {
+	class func simpleErrorAlert(title: String, body: String?) -> UIAlertController {
+		let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(okAction)
+		return alert
+	}
+}
