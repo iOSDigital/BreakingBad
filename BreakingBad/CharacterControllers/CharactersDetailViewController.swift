@@ -8,6 +8,7 @@
 import UIKit
 
 class CharactersDetailViewController: UITableViewController {
+	
 	var character: Character!
 	
 	let quotesDataModel = QuotesDataModel()
@@ -31,6 +32,9 @@ class CharactersDetailViewController: UITableViewController {
 	#warning("Hacky cell height thing")
 	var cellHeights = [350, 40, 40, 40, 40, 40, 40, 40, 0, 40, 0]
 	
+	
+	//MARK: - Method Body
+
 	public class func controllerWithCharacter(character: Character) -> CharactersDetailViewController {
 		let controller = UIStoryboard(name: "Characters", bundle: nil).instantiateViewController(identifier: "CharactersDetailViewController") as! CharactersDetailViewController
 		controller.character = character
@@ -72,6 +76,7 @@ class CharactersDetailViewController: UITableViewController {
 	}
 	
 	
+	//MARK: - Actions
 	@IBAction func likeButtonAction(_ sender: UIButton) {
 		UserDefaults.toggleFavourite(character.id)
 		if UserDefaults.isFavourite(character.id) {
@@ -142,12 +147,18 @@ class CharactersDetailViewController: UITableViewController {
 	@IBAction func reviewButtonAction(_ sender: UIButton) {
 		if cellHeights[10] == 0 {
 			cellHeights[10] = 240
+			self.reviewName.perform(#selector(becomeFirstResponder), with: nil, afterDelay: 0.1)
 		} else {
 			cellHeights[10] = 0
+			self.resignFirstResponder()
 		}
 		self.tableView.beginUpdates()
 		self.tableView.reloadData()
 		self.tableView.endUpdates()
+		self.tableView.scrollToRow(at: IndexPath(row: 10, section: 0), at: .bottom, animated: true)
+	}
+	override var canResignFirstResponder: Bool {
+		return true
 	}
 	
 	@IBAction func dismissController() {

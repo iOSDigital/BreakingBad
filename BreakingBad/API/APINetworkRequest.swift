@@ -8,6 +8,7 @@
 import Foundation
 
 public enum APIError: Error {
+	case DecodeError
 	case PostError
 	case URLSessionError
 }
@@ -24,8 +25,8 @@ extension APINetworkRequest {
 	func load(_ url: URL, withCompletion completion: @escaping (ModelType?) -> Void) {
 
 		let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response , error) -> Void in
-			print("Load: \(url.absoluteString)")
-			print("Data: \(String(decoding: data!, as: UTF8.self))")
+			//print("Load: \(url.absoluteString)")
+			//print("Data: \(String(decoding: data!, as: UTF8.self))")
 			
 			guard let data = data else {
 				DispatchQueue.main.async { completion(nil) }
@@ -35,15 +36,8 @@ extension APINetworkRequest {
 				let value = try self?.decode(data)
 				DispatchQueue.main.async { completion(value) }
 			} catch {
-				print("Error")
+				print(APIError.DecodeError)
 			}
-			
-			
-//			guard let data = data, let value = try? self?.decode(data) else {
-//				DispatchQueue.main.async { completion(nil) }
-//				return
-//			}
-//			DispatchQueue.main.async { completion(value) }
 		}
 		task.resume()
 	}
@@ -62,7 +56,7 @@ extension APINetworkRequest {
 				
 				if let httpResponse = response as? HTTPURLResponse {
 					switch httpResponse.statusCode {
-						case 200..<300:
+						case 200...299:
 							completion(.success(httpResponse))
 						default:
 							print("Error: HTTP Status Code: \(httpResponse.statusCode)")
