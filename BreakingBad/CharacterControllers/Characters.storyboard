@@ -291,8 +291,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Paul" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-7u-hPF">
-                                                    <rect key="frame" x="20" y="38" width="206" height="35"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-7u-hPF">
+                                                    <rect key="frame" x="20" y="38" width="226" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                                 </textField>
@@ -302,14 +302,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2021-01-02" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jmK-qs-zBq">
-                                                    <rect key="frame" x="254" y="38" width="120" height="34"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="y0j-Ul-STT">
+                                                    <rect key="frame" x="254" y="33" width="139" height="46"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="yeP-U7-WAJ"/>
+                                                        <constraint firstAttribute="height" constant="46" id="1qo-k2-ah0"/>
+                                                        <constraint firstAttribute="width" constant="139" id="rXf-Ra-JQS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <connections>
+                                                        <action selector="datePickerAction:" destination="PB8-JF-I1D" eventType="valueChanged" id="N71-YH-Gfr"/>
+                                                    </connections>
+                                                </datePicker>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date watched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLv-Iw-jsZ">
                                                     <rect key="frame" x="254" y="13" width="90" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -322,7 +324,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="107" id="CuO-Pp-zuu"/>
                                                     </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -342,19 +343,19 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="jmK-qs-zBq" secondAttribute="trailing" constant="20" id="7gN-JG-A7t"/>
                                                 <constraint firstItem="163-rA-Gh4" firstAttribute="top" secondItem="Gdv-13-j1X" secondAttribute="topMargin" constant="2" id="80r-Zn-6eo"/>
-                                                <constraint firstItem="yLv-Iw-jsZ" firstAttribute="leading" secondItem="jmK-qs-zBq" secondAttribute="leading" id="A9d-Io-VNK"/>
                                                 <constraint firstItem="pNe-e3-wGx" firstAttribute="top" secondItem="NdK-uQ-MIy" secondAttribute="bottom" constant="10" id="Aip-dw-9tX"/>
+                                                <constraint firstItem="y0j-Ul-STT" firstAttribute="leading" secondItem="yLv-Iw-jsZ" secondAttribute="leading" id="PPA-So-fAf"/>
                                                 <constraint firstItem="pNe-e3-wGx" firstAttribute="leading" secondItem="Gdv-13-j1X" secondAttribute="leadingMargin" id="QPi-QQ-5HR"/>
                                                 <constraint firstItem="9mc-7u-hPF" firstAttribute="leading" secondItem="Gdv-13-j1X" secondAttribute="leadingMargin" id="R90-oA-Gxp"/>
                                                 <constraint firstItem="yLv-Iw-jsZ" firstAttribute="top" secondItem="Gdv-13-j1X" secondAttribute="topMargin" constant="2" id="Rlm-8e-3I7"/>
                                                 <constraint firstItem="NdK-uQ-MIy" firstAttribute="leading" secondItem="Gdv-13-j1X" secondAttribute="leadingMargin" id="TmE-qB-Tlx"/>
+                                                <constraint firstItem="y0j-Ul-STT" firstAttribute="top" secondItem="yLv-Iw-jsZ" secondAttribute="bottom" constant="3" id="ZGN-WI-HoO"/>
+                                                <constraint firstItem="y0j-Ul-STT" firstAttribute="leading" secondItem="9mc-7u-hPF" secondAttribute="trailing" constant="8" id="ZLH-0S-QTw"/>
                                                 <constraint firstItem="pNe-e3-wGx" firstAttribute="bottom" secondItem="Gdv-13-j1X" secondAttribute="bottomMargin" id="eLN-EC-ZjK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y0j-Ul-STT" secondAttribute="trailing" constant="1" id="f92-37-iII"/>
                                                 <constraint firstItem="NdK-uQ-MIy" firstAttribute="trailing" secondItem="Gdv-13-j1X" secondAttribute="trailingMargin" id="ibp-Pu-4Hv"/>
-                                                <constraint firstItem="jmK-qs-zBq" firstAttribute="leading" secondItem="9mc-7u-hPF" secondAttribute="trailing" constant="28" id="om1-jx-dWo"/>
                                                 <constraint firstItem="pNe-e3-wGx" firstAttribute="trailing" secondItem="Gdv-13-j1X" secondAttribute="trailingMargin" id="v0h-Tq-NTm"/>
-                                                <constraint firstItem="jmK-qs-zBq" firstAttribute="top" secondItem="yLv-Iw-jsZ" secondAttribute="bottom" constant="8" symbolic="YES" id="vmT-FU-Ue9"/>
                                                 <constraint firstItem="163-rA-Gh4" firstAttribute="leading" secondItem="Gdv-13-j1X" secondAttribute="leadingMargin" id="x1Y-n1-rQz"/>
                                                 <constraint firstItem="9mc-7u-hPF" firstAttribute="top" secondItem="163-rA-Gh4" secondAttribute="bottom" constant="8" symbolic="YES" id="yYf-KV-ed4"/>
                                                 <constraint firstItem="NdK-uQ-MIy" firstAttribute="top" secondItem="9mc-7u-hPF" secondAttribute="bottom" constant="9" id="zFG-6e-MZg"/>
@@ -385,7 +386,7 @@
                         <outlet property="nicknameLabel" destination="qYP-R3-cq1" id="PzE-Z8-GZp"/>
                         <outlet property="occupationLabel" destination="YKE-Le-GCw" id="aBf-uZ-aL5"/>
                         <outlet property="portrayedLabel" destination="okd-G5-p6Y" id="RVe-dJ-MZe"/>
-                        <outlet property="reviewDate" destination="jmK-qs-zBq" id="mAL-rQ-A5C"/>
+                        <outlet property="reviewDate" destination="y0j-Ul-STT" id="R2S-q0-Haw"/>
                         <outlet property="reviewName" destination="9mc-7u-hPF" id="fP3-tR-J8k"/>
                         <outlet property="reviewTextView" destination="NdK-uQ-MIy" id="WRY-oW-QxP"/>
                         <outlet property="statusLabel" destination="K9p-IA-57h" id="3ba-h3-tkb"/>

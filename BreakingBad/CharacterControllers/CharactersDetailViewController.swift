@@ -11,7 +11,7 @@ class CharactersDetailViewController: UITableViewController {
 	var character: Character!
 	
 	@IBOutlet var reviewName: UITextField!
-	@IBOutlet var reviewDate: UITextField!
+	@IBOutlet var reviewDate: UIDatePicker!
 	@IBOutlet var reviewTextView: UITextView!
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
@@ -72,20 +72,31 @@ class CharactersDetailViewController: UITableViewController {
 		}
 	}
 	
+	@IBAction func datePickerAction(_ sender: UIDatePicker) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
 	@IBAction func postReviewAction(_ sender: UIButton) {
-		if let name = reviewName.text, let date = reviewDate.text, let reviewBody = reviewTextView.text {
+
+		if let name = reviewName.text, let reviewBody = reviewTextView.text,
+		   !name.isEmpty, !reviewBody.isEmpty {
+			let date = reviewDate.date.apiStringFromDate()
 			let review = Review(id: UUID().uuidString, characterID: character.id, name: name, watchDate: date, reviewBody: reviewBody)
-			
+
 			ReviewsDataModel().postReview(review: review) { result in
 				switch result {
 					case .success(let response):
-						print("SUCCESS")
+						// Hide the fields?
+						print("SUCCESS: \(response.statusCode)")
 					case .failure(let error):
 						print(error.localizedDescription)
 						let alert = UIAlertController.simpleErrorAlert(title: "Sorry, an error has occured", body: "Your review was unable to be posted.")
 						self.present(alert, animated: true, completion: nil)
 				}
 			}
+		} else {
+			let alert = UIAlertController.simpleErrorAlert(title: "Error", body: "Please make sure all fields are filled in")
+			self.present(alert, animated: true, completion: nil)
 		}
 	}
 	

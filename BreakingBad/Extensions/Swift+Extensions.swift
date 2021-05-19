@@ -14,3 +14,11 @@ extension Array where Element: Equatable {
 		}
 	}
 }
+
+extension Date {
+	func apiStringFromDate() -> String {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd"
+		return formatter.string(from: self)
+	}
+}
